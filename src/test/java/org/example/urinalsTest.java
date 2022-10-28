@@ -58,10 +58,6 @@ class urinalsTest {
     void checkValidString1() {
         urinals u = new urinals();
         assertEquals(-1, u.checkValidString("0011"));
-        assertEquals(0, u.checkValidString("101010"));
-        assertEquals(0,u.checkValidString("00000"));
-        assertEquals(-1, u.checkValidString("101010010101010101010101010101010"));
-        assertEquals(-1, u.checkValidString(""));
         System.out.println("Sai Prakash Test seven executed");
     }
     @Test
