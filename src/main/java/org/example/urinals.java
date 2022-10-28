@@ -16,27 +16,25 @@ public class urinals {
         urinalString = sc1.next();
         return urinalString;
     }
-    public static void getUrinalStringFile() throws IOException {
+    public static void getUrinalStringFile(){
         try {
             File f = new File("inputFile\\urinals.dat");
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             String urinalString;
-            ArrayList<Integer> arrli = new ArrayList<>();
+            ArrayList<Integer> a = new ArrayList<>();
             while ((urinalString = br.readLine()) != null) {
                 int res = countUrinals(urinalString);
-                arrli.add(res);
+                a.add(res);
             }
             br.close();
-            printUrinalStringFile(arrli);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+            printUrinalStringFile(a);
+        }  catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void printUrinalStringFile(ArrayList<Integer> arrli) throws IOException{
+    public static void printUrinalStringFile(ArrayList<Integer> a) throws IOException{
         try {
             String s1 = "outputFiles\\rule";
             String s2=".txt";
@@ -44,12 +42,12 @@ public class urinals {
             int x=0;
             while(myObj.exists()) {
                 x++;
-                myObj = new File(s1+Integer.toString(x)+s2);
+                myObj = new File(s1+x+s2);
             }
             FileWriter fw = new FileWriter(myObj,true);
             BufferedWriter bw = new BufferedWriter(fw);
-            for(int i=0;i<arrli.size();i++){
-                bw.write(Integer.toString(arrli.get(i))+"\n");
+            for (Integer integer : a) {
+                bw.write(integer + "\n");
             }
             bw.close();
         } catch (IOException e) {
@@ -60,7 +58,7 @@ public class urinals {
 
     public static int countUrinals(String urinalString){
 
-        int count = 0;
+        int count;
         count = checkValidString(urinalString);
         if(count!=-1){
             String x = String.valueOf(urinalString.charAt(0));
@@ -114,12 +112,12 @@ public class urinals {
         return c;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
 
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Press 1. for keyboard input 2. for file input");
         String in = sc1.next();
-        ArrayList<Integer> arrli = new ArrayList<>();
+        ArrayList<Integer> a = new ArrayList<>();
         if(in.equals("1")){
             System.out.println("Enter your urinals string");
             while(true) {
@@ -127,10 +125,10 @@ public class urinals {
                 if(urinalString.equals("-1")){break;}
                 int res = countUrinals(urinalString);
                 //System.out.println(res);
-                arrli.add(res);
+                a.add(res);
             }
-            for(int i=0;i<arrli.size();i++){
-                System.out.println(arrli.get(i));
+            for (Integer integer : a) {
+                System.out.println(integer);
             }
         }
         else if(in.equals("2")){
