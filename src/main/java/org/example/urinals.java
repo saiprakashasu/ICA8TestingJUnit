@@ -19,16 +19,28 @@ public class urinals {
     public static void getUrinalStringFile(){
         try {
             File f = new File("inputFile\\urinals.dat");
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
-            String urinalString;
-            ArrayList<Integer> a = new ArrayList<>();
-            while ((urinalString = br.readLine()) != null) {
-                int res = countUrinals(urinalString);
-                a.add(res);
+            if(f.exists()){
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader(fr);
+                String urinalString;
+                ArrayList<Integer> a = new ArrayList<>();
+                int c = 0;
+                while ((urinalString = br.readLine()) != null) {
+                    int res = countUrinals(urinalString);
+                    a.add(res);
+                    c++;
+                }
+                if(c==0){
+                    System.out.println("Your file is empty");
+                }
+                br.close();
+                if(c!=0) {
+                    printUrinalStringFile(a);
+                }
             }
-            br.close();
-            printUrinalStringFile(a);
+            else{
+                System.out.println("Your file doesnt exist. Create and try again");
+            }
         }  catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -38,12 +50,16 @@ public class urinals {
         try {
             String s1 = "outputFiles\\rule";
             String s2=".txt";
-            File myObj = new File(s1+s2);
+            String m = s1+s2;
+            File myObj = new File(m);
             int x=0;
             while(myObj.exists()) {
+                System.out.println(m+"Exists!");
                 x++;
-                myObj = new File(s1+x+s2);
+                m = s1+x+s2;
+                myObj = new File(m);
             }
+            System.out.println(m+" created for output");
             FileWriter fw = new FileWriter(myObj,true);
             BufferedWriter bw = new BufferedWriter(fw);
             for (Integer integer : a) {
