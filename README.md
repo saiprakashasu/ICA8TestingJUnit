@@ -15,6 +15,7 @@ Output
 If input is the keyboard, print the results to the screen. If input is from a file, output to rule.txt. If the file rule.txt already
 exists, increment a counter, and rename the file using the following rule pattern: rule1.txt, rule2.txt, etc. The output is
 JUST THE NUMBER of free urinals. Given the above output, your rule.txt file should contain:
+  
 1
 
 0
