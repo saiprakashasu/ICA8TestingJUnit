@@ -1,3 +1,4 @@
+//Sai Prakash
 package org.example;
 
 import java.io.*;
@@ -39,7 +40,7 @@ public class urinals {
                 }
             }
             else{
-                System.out.println("Your file doesnt exist. Create and try again");
+                System.out.println("Your file does not exist. Create and try again");
             }
         }  catch (IOException e) {
             throw new RuntimeException(e);
