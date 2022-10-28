@@ -135,6 +135,7 @@ public class urinals {
         }
         else if(in.equals("2")){
             getUrinalStringFile();
+            System.out.println("Check outputFiles folder to see the result");
         }
         else{
             System.out.println("Wrong input");
